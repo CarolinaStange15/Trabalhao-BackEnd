@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/tabalhao.iml" filepath="$PROJECT_DIR$/.idea/tabalhao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Trabalhao-BackEnd.iml" filepath="$PROJECT_DIR$/.idea/Trabalhao-BackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tabalhao/tabalhao.iml" filepath="$PROJECT_DIR$/tabalhao/tabalhao.iml" />
     </modules>
   </component>
 </project>
