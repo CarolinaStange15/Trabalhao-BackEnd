@@ -57,7 +57,7 @@ public class EnderecoService {
         enderecoRepositorio.deleteById(enderecoId);
     }
 
+    public Optional<Endereco> acharPorId(Long id) {
+        return enderecoRepositorio.findById(id);
+    }
 }
-
-
-

@@ -37,4 +37,8 @@ public class ClienteService {
         }
         clienteRepositorio.deleteById(id);
     }
+
+    public Optional<Cliente> pegarPorId(Long id) {
+        return clienteRepositorio.findById(id);
+    }
 }

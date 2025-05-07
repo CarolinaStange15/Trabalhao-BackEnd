@@ -2,8 +2,10 @@ package senac.tabalhao.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import senac.tabalhao.entity.Produto;
+import senac.tabalhao.repository.PedidoItensRepositorio;
 import senac.tabalhao.repository.ProdutoRepositorio;
 
 import java.util.List;
@@ -14,6 +16,10 @@ public class ProdutoService {
 
     @Autowired
     ProdutoRepositorio produtoRepositorio;
+
+    @Autowired
+    @Lazy
+    private PedidoItensService pedidoItensService;
 
     public List<Produto> listarProdutos() {return produtoRepositorio.findAll();}
 
@@ -37,8 +43,16 @@ public class ProdutoService {
         if (!produtoRepositorio.existsById(id)) {
             throw new IllegalArgumentException("Não existe nenhum produto com esse ID!");
         }
+
+        if (pedidoItensService.produtoEstaEmPedido(id)) {
+            throw new RuntimeException("O produto está sendo utilizado em um pedido!");
+        }
+
+
         produtoRepositorio.deleteById(id);
     }
 
-
+    public Optional<Produto> buscarPorId(Long id) {
+        return produtoRepositorio.findById(id);
+    }
 }
